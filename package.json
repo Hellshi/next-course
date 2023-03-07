@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production next build",
     "start": "next start",
     "test": "jest --silent",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --silent",
     "lint": "eslint src",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
