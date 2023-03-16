@@ -37,3 +37,12 @@ export const MenuGroup = styled.div`
     }
   `}
 `
+type MenuFullProps = {
+  isHidden: boolean
+}
+
+export const MenuFull = styled.nav<MenuFullProps>`
+  ${({ isHidden }) => css`
+    opacity: ${isHidden ? 0 : 1};
+  `}
+`
