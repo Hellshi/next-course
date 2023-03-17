@@ -37,4 +37,22 @@ describe('<Menu />', () => {
       opacity: 0
     })
   })
+
+  it('Should show register box when logged out', () => {
+    RenderWithTheme(<Menu />)
+    expect(screen.getByText(/log in now/i)).toBeInTheDocument()
+    expect(screen.getByText(/sign up/i)).toBeInTheDocument()
+
+    expect(screen.queryByText(/My account/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Wishlist/i)).not.toBeInTheDocument()
+  })
+
+  it('Should wishlist and account when logged in', () => {
+    RenderWithTheme(<Menu username="Hell" />)
+    expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument()
+
+    expect(screen.getByText(/My account/i)).toBeInTheDocument()
+    expect(screen.getByText(/Wishlist/i)).toBeInTheDocument()
+  })
 })
