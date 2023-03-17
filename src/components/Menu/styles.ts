@@ -101,6 +101,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
     justify-content: space-between;
     display: flex;
     flex-direction: column;
+    transition: opacity 0.3s ease-in-out;
     justify-content: space-between;
     background: ${theme.colors.white};
     position: absolute;
@@ -123,6 +124,11 @@ export const MenuFull = styled.nav<MenuFullProps>`
       height: 2.4rem;
     }
 
+    ${RegisterBox} {
+      transform: ${isHidden ? 'translateY(3rem)' : 'translateY(0)'};
+      transition: opacity 0.3s ease-in-out;
+    }
+
     ${MenuNav} {
       display: flex;
       align-items: center;
@@ -130,11 +136,14 @@ export const MenuFull = styled.nav<MenuFullProps>`
       flex: 1;
       flex-direction: column;
     }
+
     ${MenuLink} {
       color: ${theme.colors.black};
       font-weight: ${theme.font.bold};
       font-size: ${theme.font.sizes.xlarge};
       margin-bottom: ${theme.spacings.small};
+      transform: ${isHidden ? 'translateY(3rem)' : 'translateY(0)'};
+      transition: opacity 0.3s ease-in-out;
     }
   `}
 `
