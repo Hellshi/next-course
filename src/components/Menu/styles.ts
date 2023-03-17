@@ -32,6 +32,7 @@ export const MenuGroup = styled.div`
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
+    align-items: center;
     > div {
       margin-left: ${theme.spacings.xsmall};
     }
@@ -41,7 +42,11 @@ type MenuFullProps = {
   isHidden: boolean
 }
 
-export const MenuNav = styled.div``
+export const MenuNav = styled.div`
+  ${({ theme }) => css`
+    margin-left: ${theme.spacings.small};
+  `}
+`
 
 export const MenuLink = styled.a`
   ${({ theme }) => css`
@@ -49,6 +54,7 @@ export const MenuLink = styled.a`
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
+    color: ${theme.colors.white};
     text-align: center;
     &:hover {
       &::after {

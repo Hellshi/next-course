@@ -7,6 +7,7 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 import Logo from '../Logo'
 import * as S from './styles'
 import Button from '../Button'
+import MediaMatch from '../MediaMatch'
 
 export type MenuProps = {
   username?: string
@@ -17,19 +18,37 @@ const Menu = ({ username }: MenuProps) => {
 
   return (
     <S.Wrapper>
-      <S.IconWrapper>
-        <MenuIcon aria-label="Open Menu" onClick={() => setIsHidden(false)} />
-      </S.IconWrapper>
+      <MediaMatch lessThan="medium">
+        <S.IconWrapper>
+          <MenuIcon aria-label="Open Menu" onClick={() => setIsHidden(false)} />
+        </S.IconWrapper>
+      </MediaMatch>
+
       <S.LogoWrapper>
         <Logo hideOnMobile />
       </S.LogoWrapper>
+
+      <MediaMatch greaterThan="medium">
+        <S.MenuNav>
+          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="#">Explore</S.MenuLink>
+        </S.MenuNav>
+      </MediaMatch>
+
       <S.MenuGroup>
         <S.IconWrapper>
           <SearchIcon aria-label="search" />
         </S.IconWrapper>
+
         <S.IconWrapper>
           <ShoppingCartIcon aria-label="shopping cart" />
         </S.IconWrapper>
+
+        {!username && (
+          <MediaMatch greaterThan="medium">
+            <Button>Sign in</Button>
+          </MediaMatch>
+        )}
       </S.MenuGroup>
 
       <S.MenuFull aria-hidden={isHidden} isHidden={isHidden}>
